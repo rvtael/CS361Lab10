@@ -1,6 +1,23 @@
 Group Charter: Your Team Name  
 
-Meetings:  List time 
+Meeting Ground Rules:
+ Meetings will be normally scheduled at 6:45 PM on Monday, Wednesday, and Friday. All members are expected to attend each meeting unless there is a scheduling conflict. 
+If there is a conflict the group member should inform the group twenty four hours in advance. 
+Given that there is only six weeks left in the semester, scheduling conflicts should be kept to an absolute minimum.
+If the meeting schedule needs to change it will be discussed and agreed to as a group.
+
+  Meeting time is valuable and therefore everyone should be on time, mentally present, and engaged. 
+ This means there should be no outside work brought to the meetings, and phones should only be used to inform people outside the group that the member is currently engaged.
+Emergencies that require immediate attention are acceptable, however if they become a problem the issues will be discussed as a group and a collective decision will be arrived at as to how to proceed. 
+If a member violates these norms repeatedly it will be dealt with as outlined in the disciplinary section below.
+
+  The meetings will take place over Microsoft Teams. 
+ Each meeting will follow the Scrum framework.
+ At every meeting the group will address what each member has accomplished, what each member plans to accomplish before the next meeting, and the challenges each member is facing. 
+Meetings should be as long as needed to keep every group member informed, and no longer. 
+Meeting length will vary with the needs of the project but should be kept to less than an hour. 
+If more time is needed for individual members, they should schedule time to work together outside of regular meeting time.
+
 
 Group Contacts: 
 
