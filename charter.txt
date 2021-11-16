@@ -1,5 +1,8 @@
 	Group Charter: Your Team Name
 
+	Group Contact Info:
+
+		Broderick Hebert: Email - BMHebert@uwm.edu, GitHub Username - BMHebert
 
 	Meeting Times: Monday, Wednesday, and Friday at 6:45 PM
 
