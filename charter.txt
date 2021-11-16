@@ -9,8 +9,31 @@
 
 	Goals:
 
+1: To work together as a team by respecting, collaborating, with each other to develop a product that is functional and able to be presentable for the final exam.
 
-	Work Norms:
+
+2: To become aware of the knowledge and concepts that will be important when looking to become a software engineer. As well as using concepts such as using GitHub,
+Python, Django and other concepts that were covered in class.
+
+
+3: To gain an experience of working together in a group while using Agile principles that may translate over to a professional experience. Providing an experience
+like this can help future success at a potential job or professional experience.
+
+
+	Work Norms: 
+
+1. Time Commitment:
+
+The goal for each member should be to complete the task that they are assigned, it would be very difficult to assign a specfic time to each task that has to be done.
+Therefore, If that individual spends adequate time on a task and is struggling, it is that individuals responsiblity to reach out to other group members and seek
+guidance on what they are struggling on. If there is a group member that is struggling to complete their task, it is the groups job to pivot and provide help or
+determine whether that individual’s workload should be decreased.
+
+
+2. Quality Work:
+
+The goal for each member should be to produce quality code that accomplishes the task that the individual is assigned to do. If that individual doesn’t reach out
+for help or produce a quality product, then the procedures for dealing with that individual are in the ground rules.
 
 
 	Meeting Ground Rules:
