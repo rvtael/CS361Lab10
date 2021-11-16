@@ -33,18 +33,15 @@ Group communication and interaction:
   
 Group participation and work quality:
 
-Group participation and work quality 
-
 1. Group participation: 
 
-	Given a group members participation of work, they may be asked to share more of their workload or less based on the situation. Everyone should be cognizant of 
+Given a group members participation of work, they may be asked to share more of their workload or less based on the situation. Everyone should be cognizant of 
 meetings, along with actively helping the flow of meetings. If someone is asked to share what is on their mind or asked to give others a chance to speak but 
 do not, and their participation in a conversation is blocking the flow of a meeting, then it could be considered as an infraction.
 
 2. Work not up to standard: 
 
-	There is a standard that we should all uphold if we want to succeed. We should strive for quality of work, timeliness of work, and respect for our fellow 
-	group
+There is a standard that we should all uphold if we want to succeed. We should strive for quality of work, timeliness of work, and respect for our fellow group
 members. Everyone gets inundated with work on occasion and it’s understandable that at periods, someone may not be able to give their full effort given what we agreed 
 upon. If this happens, said group member who is having issues must keep in contact with the rest of the group so the task can be redistributed, using what our group 
 established in decisions and delegation. Hopefully this will help the group continue functioning efficiently. If the individual is consistently having issues with 
@@ -58,9 +55,9 @@ consistently, then it may be considered a minor offense.
 
 4. Workload too heavy: 
 
-	If the time restraints or lack of individuals working to complete a task is not sufficient, we as a group will work on an e-mail to send to Jayson (or in 
-	person if we can be on campus) which logs the details of the amount of work to be done, the status of how far we are as a group, and the reasoning as to why 
-	we can’t complete it in the given time period.
+If the time restraints or lack of individuals working to complete a task is not sufficient, we as a group will work on an e-mail to send to Jayson (or in 
+person if we can be on campus) which logs the details of the amount of work to be done, the status of how far we are as a group, and the reasoning as to why 
+we can’t complete it in the given time period.
 
 
 Disciplinary Procedures
