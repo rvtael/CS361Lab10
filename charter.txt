@@ -2,8 +2,10 @@
 
 	Group Contact Info:
 
-		Broderick Hebert: Email - BMHebert@uwm.edu, GitHub Username - BMHebert
-		Samuel Bruggink: Email - Bruggin9@uwm.edu, GitHub Username - Bruggin9
+		Broderick Hebert: E-mail - BMHebert@uwm.edu, GitHub Username - BMHebert
+		Samuel Bruggink: E-mail - Bruggin9@uwm.edu, GitHub Username - Bruggin9
+		Corey Golumski: E-mail - golumski@uwm.edu, GitHub Username - cogii
+		Yazan Salem: E-mail - ysalem@uwm.edu, GitHub Username - yazansalem
 
 	Meeting Times: Monday, Wednesday, and Friday at 6:45 PM
 
@@ -184,10 +186,10 @@ Name: Broderick Hebert                       Date: 11/16/2021
 Name: Samuel Bruggink  			     Date: 11/17/2021 
 
 
-Name: _____________________________________  Date: _______________ 
+Name: Corey Christopher Golumski             Date: 11/17/2021 
 
 
-Name: _____________________________________  Date: _______________ 
+Name: Yazan Salem			     Date: 11/17/2021 
 
 
 Name: _____________________________________  Date: _______________
