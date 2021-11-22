@@ -67,17 +67,22 @@ member finishes their portion of the project, they should create a pull request 
 who forgot. If the email is not responded to in 24 hours, the group will begin to take on that member‟s responsibilities. If the member has a good reason for not responding, it
 will be taken into consideration as to whether there will be disciplinary action; otherwise it will be an immediate minor offense. If however, the member responds within the 24
 hour time period stating they forgot, no disciplinary action will be taken. If a member is having problems with their portion of the work, they should let the rest of the group knew
-immediately so they can received any needed help as soon as possible.  
+immediately so they can received any needed help as soon as possible.
+
+2. Timely Responses:
+
+Teams messages should be responded to within 4 - 5 hours given that they are sent within reasonable hours or when extenuating circumstances prevent it. Everyone should also download
+the Teams app onto their phone so that messages are more likely to reach them in a timely fashion.
 
 
-2. Group communication on tardiness/missed meetings and meeting information:
+3. Group communication on tardiness/missed meetings and meeting information:
 
 If a member has prior knowledge of a missed meeting or tardiness of a day or more, that member should notify all members and decide wether it will be best to reschedule meeting.
 If it is the day of the meeting and a group member is going to miss the meeting or knows they are going to be tardy by more than five minutes, that member shall send a Teams message
 to all group members informing them of the situation. Failure to do so more than once will result in a minor offense.  
 
 
-3. Communication ethics:
+4. Communication ethics:
 
 There shall be an understanding among group members that all opinions or input by any individual member is valued and will be respected, even if disagreed with. People and/or their
 opinions shall not in any way be degraded or dismissed but all opinions shall have equal consideration. If a member feels his opinions are being rejected without good reason, he has
@@ -86,7 +91,7 @@ opinions are not being used. If this situation happens more than three times the
 opportunity is then open to state their case to Rock. 
 
 
-4. Group structure:
+5. Group structure:
 
 These following roles are here to help the group be more efficient: 
 
@@ -104,13 +109,13 @@ If any member in a role does not follow through with his responsibilities on mul
 replaced by group decision.  
 
 
-5. Decision making:
+6. Decision making:
 
 Any decisions which need to be made about the project, project direction or disciplinary action will be made by a majority vote. Any decisions about delegation will be covered in 
 part six. Members are expected to vote within 24 hours.
 
 
-6. Group decisions on delegation: 
+7. Group decisions on delegation: 
 
 The delegation of responsibilities to group members will be decided in the following fashion. The responsibilities will be discussed and decided on as a group decision. Then each
 group member has the opportunity to volunteer for the task he may want. If a group member does not volunteer for a task, they will be assigned one by the leader. If a group member
