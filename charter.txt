@@ -195,7 +195,9 @@ Name: Samuel Bruggink  			     Date: 11/17/2021
 Name: Corey Christopher Golumski             Date: 11/17/2021 
 
 
-Name: Yazan Salem			     Date: 11/17/2021 
+Name: Yazan Salem			     Date: 11/17/2021
+
+Name: Rein Tael				     Date: 11/23/2021
 
 
 Name: _____________________________________  Date: _______________
