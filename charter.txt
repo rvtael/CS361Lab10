@@ -7,6 +7,7 @@
 		Corey Golumski: E-mail - golumski@uwm.edu, GitHub Username - cogii
 		Yazan Salem: E-mail - ysalem@uwm.edu, GitHub Username - yazansalem
 		Rein Tael: E-mail - reintael@uwm.edu, GitHub Username - rvtael
+		Wajahat Ali Shah: E-mail - walishah@uwm.edu, GitHub Username - WajahatAliShah1
 
 	Meeting Times: Monday and Wednesday at 6:45 PM, Friday 11:00Am
 
@@ -211,4 +212,4 @@ Name: Yazan Salem			     Date: 11/17/2021
 Name: Rein Tael				     Date: 11/23/2021
 
 
-Name: _____________________________________  Date: _______________
+Name: Wajahat Ali Shah Date: 11/23/2021
