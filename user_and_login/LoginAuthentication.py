@@ -1,0 +1,5 @@
+
+
+class LoginAuthentication():
+
+    def set
