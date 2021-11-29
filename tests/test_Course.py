@@ -5,7 +5,7 @@ from user_and_login.User import User
 
 
 # createCourse(courseName, courseTime, courseDays, courseHours, courseInstructor, courseTA)
-# editCourse(courseName, courseTime, courseDays, courseHours, courseInstructor, courseTa)
+# editCourse(courseName, courseTime, courseDays, courseHours, courseInstructor, courseTA)
 # deleteCourse(courseName)
 # populateSearchClass(searchPromp)  should change class to course
 # displayAllCourse()
