@@ -6,6 +6,8 @@
 		Samuel Bruggink: E-mail - Bruggin9@uwm.edu, GitHub Username - Bruggin9
 		Corey Golumski: E-mail - golumski@uwm.edu, GitHub Username - cogii
 		Yazan Salem: E-mail - ysalem@uwm.edu, GitHub Username - yazansalem
+		Rein Tael: E-mail - reintael@uwm.edu, GitHub Username - rvtael
+		Wajahat Ali Shah: E-mail - walishah@uwm.edu, GitHub Username - WajahatAliShah1
 
 	Meeting Times: Monday and Wednesday at 6:45 PM, Friday 11:00Am
 
@@ -71,8 +73,7 @@ immediately so they can received any needed help as soon as possible.
 
 2. Timely Responses:
 
-Teams messages should be responded to within 4 - 5 hours given that they are sent within reasonable hours or when extenuating circumstances prevent it. Everyone should also download
-the Teams app onto their phone so that messages are more likely to reach them in a timely fashion.
+Teams messages should be responded to within 4 - 5 hours given that they are sent within reasonable hours. When extenuating circumstances prevent it, exceptions can be made. Everyone should also download the Teams app onto their phone so that messages are more likely to reach them in a timely fashion.
 
 
 3. Group communication on tardiness/missed meetings and meeting information:
@@ -159,27 +160,38 @@ which logs the details of the amount of work to be done, the status of how far w
 every member apart from the offending party must be present.
 
 
-2: A disciplinary log will be kept to keep track of any offences commited by group members. This log will be primarily the responsibility of one group member, but everyone
+2: A disciplinary log will be kept to keep track of any offenses commited by group members. This log will be primarily the responsibility of one group member, but everyone
 should have permission to edit as long as the edits are reviewed by group members.
 
 
-3: A minor offence will be considered anything that is in violotion of the group policies outlined in this charter in what the group considers a minor fashion. 
-Minor offences must be logged, ensuring to note down what the offence entailed and when it was commited. A minor offence shall result in notification of the 
-offence to the group member that will act as a warning. If the behavior does not change, a minor offence may be upgraded to a higher level.
+3: A minor offense will be considered anything that is in violotion of the group policies outlined in this charter in what the group considers a minor fashion. 
+Minor offenses must be logged, ensuring to note down what the offense entailed and when it was commited. A minor offense shall result in notification of the 
+offense to the group member that will act as a warning. If the behavior does not change, a minor offense may be upgraded to a higher level.
 
 
-4: A major offence will be considered anything that is in violation of the group policies outlined in this charter in what the group considers a major fashion,
-or if a group member accrues three minor offences. After a major offence, the group member will be considered to be on probation, which they will be alerted about
-via a detailed email. A group member on probation cannot participate in a majority vote as outlined in the first point of this section and any further offences, 
+4: A major offense will be considered anything that is in violation of the group policies outlined in this charter in what the group considers a major fashion,
+or if a group member accrues three minor offenses. After a major offense, the group member will be considered to be on probation, which they will be alerted about
+via a detailed email. A group member on probation cannot participate in a majority vote as outlined in the first point of this section and any further offenses, 
 be they major or minor, they may become a candidate forformal punishment or even perhaps dismissal. A member's probation status can be ended upon a majority vote
 as outlined in the first point in this section.
 
 
-5: When someone becomes a candidate for punishment or dismissal, a detailed list of offences leading up to the group's decision will be sent to the TA and Professor Rock,
+5: When someone becomes a candidate for punishment or dismissal, a detailed list of offenses leading up to the group's decision will be sent to the TA and Professor Rock,
 along with messages from at least two other group members outlining their personal experience with the person in question. At that point, if the TA and Professor Rock deem
 that the group member is to be removed, all of the member's contributions will be taken and their remaining work distributed among the rest of the group members.
 
+	Clearly Defined Offense List
+	
+Minor offenses:
+Missing a meeting
+Low to no participation in a group meeting
+Not responding to a message within 4 - 5 hours (unless there is an extrenuating circumstance)
 
+
+Major Offenses:
+Missing A Lab
+Not completing the work assigned to you, in particular with no communication that you're having issues with the given work
+Being abrasive in general or disrespectful to the group or a member of the group with either spoken or text communcation
 
 
 We, the team named Innovation Express agree with the Group Charter and will try our best to uphold it. 
@@ -194,7 +206,10 @@ Name: Samuel Bruggink  			     Date: 11/17/2021
 Name: Corey Christopher Golumski             Date: 11/17/2021 
 
 
-Name: Yazan Salem			     Date: 11/17/2021 
+Name: Yazan Salem			     Date: 11/17/2021
 
 
-Name: _____________________________________  Date: _______________
+Name: Rein Tael				     Date: 11/23/2021
+
+
+Name: Wajahat Ali Shah			     Date: 11/23/2021
