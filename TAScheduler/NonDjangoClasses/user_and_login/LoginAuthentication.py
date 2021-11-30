@@ -1,5 +1,4 @@
+class LoginAuthentication:
 
-
-class LoginAuthentication():
-
-    def set
+    def set(self):
+        pass

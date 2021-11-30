@@ -11,11 +11,11 @@ class CourseManagement:
         pass
 
     @staticmethod
-    def editCourse(courseName, courseTime, courseDays, courseHours, courseInstructor, courseTA):
+    def editCourse(course, courseName, courseTime, courseDays, courseHours, courseInstructor, courseTA):
         pass
 
     @staticmethod
-    def deleteCourse(courseName):
+    def deleteCourse(course, courseName):
         pass
 
     @staticmethod
