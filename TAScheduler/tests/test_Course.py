@@ -1,8 +1,8 @@
 from django.test import TestCase
 from django.test import Client
-from course_lab_management.CourseManagement import CourseManagement
+from TAScheduler.NonDjangoClasses.course_lab_management.CourseManagement import CourseManagement
 from TAScheduler.models import Course
-from TAScheduler.models import User
+from TAScheduler.models import UserProfile
 
 
 # createCourse(courseName, courseTime, courseDays, courseHours, courseInstructor, courseTA)
@@ -14,8 +14,8 @@ from TAScheduler.models import User
 class TestCreateCourse(TestCase):
 
     def setUp(self):
-        self.instructor = User
-        self.TA = User
+        self.instructor = UserProfile
+        self.TA = UserProfile
         self.testCourse = Course
         self.testCourse = CourseManagement.createCourse("Calculus", "12:00 PM", "M, W, F", "12:00 PM - 12:50 PM",
                                                         self.instructor, self.TA)
@@ -74,8 +74,8 @@ class TestCreateCourse(TestCase):
 class TestEditCourse(TestCase):
 
     def setUp(self):
-        self.instructor = User
-        self.TA = User
+        self.instructor = UserProfile
+        self.TA = UserProfile
         self.mathCourse = Course(courseName="Calculus", courseTime="12:00 PM", courseDays="M, W, F", courseInstructor=self.instructor, courseTA=self.TA)
 
     def test_editName(self):
