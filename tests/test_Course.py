@@ -1,4 +1,4 @@
-from unittest import TestCase
+from django.test import TestCase
 from course_lab_management.CourseManagement import CourseManagement
 from course_lab_management.Course import Course
 from user_and_login.User import User
