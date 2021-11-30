@@ -1,7 +1,8 @@
-from unittest import TestCase
+from django.test import TestCase
+from django.test import Client
 from course_lab_management.CourseManagement import CourseManagement
-from course_lab_management.Course import Course
-from user_and_login.User import User
+from TAScheduler.models import Course
+from TAScheduler.models import User
 
 
 # createCourse(courseName, courseTime, courseDays, courseHours, courseInstructor, courseTA)
@@ -37,7 +38,8 @@ class TestCreateCourse(TestCase):
                                                                      "creating course.")
 
     def test_invalidDays(self):
-        with self.assertRaises(ValueError, msg="An exception was not raised when createCourse was passed invalid days."):
+        with self.assertRaises(ValueError,
+                               msg="An exception was not raised when createCourse was passed invalid days."):
             CourseManagement.createCourse("Course", "12:00", "invalid input", "12:00 PM - 12:50 PM")
 
     def test_courseHours(self):
@@ -45,7 +47,8 @@ class TestCreateCourse(TestCase):
                                                                                   "correctly when creating course.")
 
     def test_invalidHours(self):
-        with self.assertRaises(ValueError, msg="An exception was not raised when createCourse was passed invalid hours."):
+        with self.assertRaises(ValueError,
+                               msg="An exception was not raised when createCourse was passed invalid hours."):
             CourseManagement.createCourse("Course", "12:00", "M, W, F", "invalid")
 
     def test_instructor(self):
@@ -58,8 +61,22 @@ class TestCreateCourse(TestCase):
             CourseManagement.createCourse("Course", "12:00", "M, W, F", "12:00 PM - 12:50 PM", "This shouldn't be this")
 
     def test_TA(self):
-        self.assertEqual(self.TA, self.testCourse.getCourseTa(), "Course TA was not set correctly when creating course.")
+        self.assertEqual(self.TA, self.testCourse.getCourseTa(),
+                         "Course TA was not set correctly when creating course.")
 
     def test_invalidTA(self):
-        with self.assertRaises(ValueError, msg="An exception was not raised when createCourse was passed an invalid TA."):
-            CourseManagement.createCourse("Course", "12:00", "M, W, F", "12:00 PM - 12:50 PM", self.instructor, "String")
+        with self.assertRaises(ValueError,
+                               msg="An exception was not raised when createCourse was passed an invalid TA."):
+            CourseManagement.createCourse("Course", "12:00", "M, W, F", "12:00 PM - 12:50 PM", self.instructor,
+                                          "String")
+
+
+class TestEditCourse(TestCase):
+
+    def setUp(self):
+        self.instructor = User
+        self.TA = User
+        self.mathCourse = Course(courseName="Calculus", courseTime="12:00 PM", courseDays="M, W, F", courseInstructor=self.instructor, courseTA=self.TA)
+
+    def test_editName(self):
+        CourseManagement.editCourse(courseName="Trigonometry", courseTime="12:00 PM", courseDays="M, W, F", courseInstructor=self.instructor, courseTA=self.TA)
