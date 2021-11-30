@@ -1,6 +1,6 @@
 import unittest
 
-from User import User
+from TAScheduler.NonDjangoClasses.user_and_login.User import User
 
 
 class CreateLabTests(unittest.TestCase):
