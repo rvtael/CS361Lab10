@@ -1,11 +1,14 @@
 from django.db import models
 
 
-class User(models.Model):
+# Create your models here.
+
+
+class UserProfile(models.Model):
     userID = models.CharField(max_length=20)
     userName = models.CharField(max_length=20)
-    userContact = models.IntegerField
-    userSSN = models.IntegerField
+    userContact = models.IntegerField()
+    userSSN = models.IntegerField()
     userAddress = models.CharField(max_length=20)
     userPassword = models.CharField(max_length=20)
     userType = models.CharField(max_length=20)
@@ -16,8 +19,8 @@ class Course(models.Model):
     courseTime = models.CharField(max_length=20)
     courseDays = models.CharField(max_length=20)
     courseHours = models.CharField(max_length=20)
-    courseInstructor = models.ForeignKey(User, on_delete=models.PROTECT)
-    courseTA = models.ForeignKey(User, on_delete=models.PROTECT)
+    courseInstructor = models.ForeignKey(UserProfile, on_delete=models.PROTECT)
+    courseTA = models.ForeignKey(UserProfile, on_delete=models.PROTECT, related_name="USERPROFILE_set")
 
 
 class Lab(models.Model):
@@ -25,7 +28,7 @@ class Lab(models.Model):
     labDays = models.CharField(max_length=20)
     labHours = models.CharField(max_length=20)
     labLocation = models.CharField(max_length=20)
-    labTA = models.ForeignKey(User, on_delete=models.PROTECT)
+    labTA = models.ForeignKey(UserProfile, on_delete=models.PROTECT)
 
 
 class Assignment(models.Model):

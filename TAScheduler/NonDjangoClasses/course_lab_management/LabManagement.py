@@ -2,9 +2,10 @@ class LabManagement(object):
     """Reduced fraction class with integer numerator and denominator."""
 
     def __init__(self, authID=""):
-      pass
+        pass
 
-    # Precondition:Lab does not already exist, all parameters are entered (save for instructor or courseTA). All parameters are valid
+    # Precondition:Lab does not already exist, all parameters are entered (save for instructor or courseTA). All
+    # parameters are valid
     # Postcondition:Lab is created
     def createLab(self, labName, labHours, labLocation, labDays, labTA):
         pass
