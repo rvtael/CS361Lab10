@@ -1,5 +1,5 @@
 import unittest
-from TAScheduler.NonDjangoClasses.user_and_login.User import User
+from TAScheduler.User.User import User
 
 # NEED MORE FUNCTIONS! Specifically getters and setters.
 
