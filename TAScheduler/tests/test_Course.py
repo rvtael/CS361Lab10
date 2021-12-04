@@ -152,4 +152,3 @@ class TestDeleteCourse(TestCase):
         oldCourse = Course.objects.get(courseName="Art")
         CourseManagement.deleteCourse(oldCourse)
         self.assertEqual(None, oldCourse, "Course was not deleted successfully.")
-
