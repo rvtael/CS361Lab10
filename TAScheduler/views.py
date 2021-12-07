@@ -3,7 +3,6 @@ from django.views import View
 from .models import UserProfile
 from TAScheduler.Managment.UserManagement import UserManagement
 
-
 # Create your views here.
 class Login(View):
     def get(self, request):
@@ -31,6 +30,9 @@ class Home(View):
     def get(self, request):
         return render(request, "home.html", {})
 
+class CreateUser(View):
+    def get(self, request):
+        return render(request, "createuser.html", {})
 
 class ClassSchedules(View):
     pass
@@ -74,3 +76,8 @@ class CourseAssignments(View):
 
 class TAList(View):
     pass
+
+  
+class CreateCourse(View):
+    def get(self, request):
+        return render(request, "createcourse.html,", {})

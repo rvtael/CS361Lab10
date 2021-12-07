@@ -22,16 +22,17 @@ getPassword()
 '''
 
 
-class TestUser(unittest.TestCase):
+class TestMyUser(unittest.TestCase):
 
     def SetUp(self):
+
         '''
         testusr0: to be empty at all times.
         testusr1: has every field filled off the bat.
         #ID, name, contact, ssn, address, password, userType (we'll use numerical flags for this)
         testusr2: to be used for all of the "set" functions.
-
         '''
+
         testusr0 = User()
         testusr1 = User(1000, "John Wick", 4142542688, 101001001, "894 Lake Street, Milwaukee, Wisconsin 99999",
                         "thisismypassword", 2)
