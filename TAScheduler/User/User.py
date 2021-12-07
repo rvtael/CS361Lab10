@@ -16,7 +16,7 @@ from TAScheduler.User.UserType import UserType
 # getAddress()
 # getPassword()
 
-
+#change class to "MyUser"
 
 class User(UserType):
 
