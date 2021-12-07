@@ -7,30 +7,33 @@ class Login(View):
     def get(self, request):
         return render(request, "login.html", {})
 
-'''
-Skeleton for "possible" methods needed
+class Home(View):
+    def get(self, request):
+        return render(request, "home.html", {})
 
- --Redirect methods--
 
- homepage_redir()
- classSchedules_redir()
- userMgmt_redir()
- classLabManagement_redir()
- accountSettings_redir()
- courseTAAssignments_redir()
- 
- 
- --Subpages--
- 
- userList_redir()
- accCreation_redir()
- classList_redir()
- courseCreation_redir()
- labList_redir()
- courseAssignments_redir()
- TAList_redir()
- 
- --errors--
- 
- 
-'''
+class Login(View):
+
+class Home(View):
+
+class ClassSchedules(View):
+
+class UserManagement(View):
+
+class ClassLabManagement(View):
+
+class CourseTAAssignments(View):
+
+class UserList(View):
+
+class AccountCreation(View):
+
+class ClassList(View):
+
+class CourseCreation(View):
+
+class LabList(View):
+
+class CourseAssignments(View):
+
+class TAList(View):
