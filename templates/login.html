@@ -24,7 +24,8 @@
   <div class="row">
     <div class="col"></div>
     <div class="col-md" style="border-style:ridge; display:block; text-align:center;" >
-            <form>
+            <form action="/" method="post">
+                {%  csrf_token %}
                 <label for="useraccount">Username</label>
                 <input type="text" id="useraccount" name="useraccount">
                 <br>
