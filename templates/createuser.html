@@ -35,6 +35,21 @@
   </div>
 </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="column">
+            <!--Context variables if there was an unsuccesful login, the 'success' and 'error' variables needs to be used in the CreateUser.post() method-->
+                {% if success %}
+                {{ success }}
+                {% endif %}
+
+                {% if error %}
+                {{ error }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
 
 </body>
 </html>

@@ -16,12 +16,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from TAScheduler.views import Login
-from django.views import View
+from TAScheduler.views import Login, Home, CreateUser, CreateCourse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Login.as_view()),
-    path('createuser', View.CreateUser),
-    path('createcourse', View.CreateCourse),
+    path('home', Home.as_view()),
+    path('createuser', CreateUser.as_view()),
+    path('createcourse', CreateCourse.as_view()),
 ]

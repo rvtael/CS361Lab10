@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views import View
-from classses import Instructor,
 
 # Create your views here.
 class Login(View):
