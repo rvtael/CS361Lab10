@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import UserProfile
+from .models import UserProfile, Course, Lab
 from TAScheduler.Managment.UserManagement import UserManagement
 
 
@@ -18,6 +18,7 @@ class Login(View):
         except:
             noUser = True
         if noUser:
+            # following line will need to be replaced once createUser method working
             newUser = UserProfile(userName=request.POST['useraccount'], userPassword=request.POST['password'])
             newUser.save()
             return redirect("/home/")
@@ -36,10 +37,28 @@ class CreateUser(View):
     def get(self, request):
         return render(request, "createuser.html", {})
 
+    def post(self, request):
+        newUser = UserProfile(userID=request.POST['userID'], userType=request.POST['userType'],
+                              userPassword=request.POST['userPassword'], userName=request.POST['userName'],
+                              userAddress=request.POST['userAddress'], userContact=request.POST['userContact'],
+                              userEmail=request.POST['userEmail'])
+        newUser.save()
+        return render(request, "createuser.html")
+
 
 class CreateCourse(View):
     def get(self, request):
         return render(request, "createcourse.html", {})
+
+    def post(self, request):
+        newCourse = Course(courseID=request.POST['ID'], name=request.POST['name'], location=request.POST['location'],
+                           hours=request.POST['hours'], days=request.POST['days'],
+                           instructor=UserProfile.objects.get(userName=request.POST['instructor']))
+        newCourse.save()
+        newCourse.TAs.add(UserProfile.objects.get(userName=request.POST['TAs']))
+        newCourse.labs.add(Lab.objects.get(name=request.POST['labs']))
+        newCourse.save()
+        return render(request, "createcourse.html")
 
 
 class ClassSchedules(View):
