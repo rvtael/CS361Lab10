@@ -6,3 +6,4 @@ admin.site.register(UserProfile)
 admin.site.register(Course)
 admin.site.register(Lab)
 admin.site.register(Schedule)
+

@@ -19,12 +19,14 @@ class Login(View):
             noUser = True
         if noUser:
             # following line will need to be replaced once createUser method working
-            newUser = UserProfile(userName=request.POST['useraccount'], userPassword=request.POST['password'])
-            newUser.save()
+            checkUser = UserProfile(userName=request.POST['useraccount'], userPassword=request.POST['password'],
+                                    userType="TA")
+            checkUser.save()
             return redirect("/home/")
         elif incorrectPassword:
             return render(request, "login.html")
         else:
+            request.session["name"] = checkUser.userName
             return redirect("/home/")
 
 
@@ -35,10 +37,13 @@ class Home(View):
 
 class CreateUser(View):
     def get(self, request):
-        return render(request, "createuser.html", {})
+        if UserProfile.objects.get(userName=request.session["name"]).userType == "Supervisor":
+            return render(request, "createuser.html", {})
+        else:
+            return redirect("/../home/")
 
     def post(self, request):
-        newUser = UserProfile(userID=request.POST['userID'], userType=request.POST['userType'],
+        newUser = UserProfile(userID=request.POST['userID'], userType=request.POST['userType'].upper(),
                               userPassword=request.POST['userPassword'], userName=request.POST['userName'],
                               userAddress=request.POST['userAddress'], userContact=request.POST['userContact'],
                               userEmail=request.POST['userEmail'])
@@ -48,7 +53,10 @@ class CreateUser(View):
 
 class CreateCourse(View):
     def get(self, request):
-        return render(request, "createcourse.html", {})
+        if UserProfile.objects.get(userName=request.session["name"]).userType == "Supervisor":
+            return render(request, "createcourse.html", {})
+        else:
+            return redirect("/../home/")
 
     def post(self, request):
         newCourse = Course(courseID=request.POST['ID'], name=request.POST['name'], location=request.POST['location'],

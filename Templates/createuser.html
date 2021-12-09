@@ -12,8 +12,8 @@
     <div class = "nav-center">
     <h4>Create User</h4>
       <ul class="nav-links">
-        <li><a href="home.html">Dashboard</a></li>
-        <li><a href="createcourse.html">Create Course</a></li>
+        <li><a href="/../home/">Dashboard</a></li>
+        <li><a href="/../createcourse/">Create Course</a></li>
       </ul>
     </div>
   </nav>
@@ -31,7 +31,12 @@
        <br>
        
        <li>
-         <label class="label-control" for="userType">User Type <input type="text" id="userType " name="userType">
+         <label class="label-control" for="userType"> User Type
+             <select name="userType" id="userType">
+                 <option value="Supervisor">Supervisor</option>
+                 <option value="Instructor">Instructor</option>
+                 <option value="TA">TA</option>
+            </select>
          </label>
        </li>
        <br>
