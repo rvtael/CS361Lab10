@@ -3,7 +3,8 @@
 
 <head>
     <title> DashBoard</title>
-    <link rel="stylesheet" href ="styles.css">
+    {% load static %}
+    <link rel="stylesheet" href ="{% static 'styles.css'%}">
 
     <meta charset="UTF-8">
 </head>
@@ -13,8 +14,8 @@
     <div class = "nav-center">
     <h4>Dashboard</h4>
       <ul class="nav-links">
-        <li><a href="/../createuser/">Create User</a></li>
-        <li><a href="/../createcourse/">Create Course</a></li>
+        <li><a href="../createuser/">Create User</a></li>
+        <li><a href="../createcourse/">Create Course</a></li>
       </ul>
     </div>
   </nav>
