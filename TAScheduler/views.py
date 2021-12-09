@@ -4,7 +4,20 @@ from .models import UserProfile, Course, Lab
 from TAScheduler.Managment.UserManagement import UserManagement
 
 
-# Create your views here.
+# A method to check if a user is allowed to view a certain webpage based on their userType. Included a check for if
+# the user is not logged in
+# name: The name of the current user. Should be gotten using request.session["name"]
+# valid_types: A list of all the types allowed to access the page. Should be all caps.
+def userAllowed(name, valid_types):
+    isValid = True
+    try:
+        if not (UserProfile.objects.get(userName=name).userType in valid_types):
+            isValid = False
+    except UserProfile.DoesNotExist:
+        isValid = False
+    return isValid
+
+
 class Login(View):
     def get(self, request):
         return render(request, "login.html")
@@ -13,31 +26,44 @@ class Login(View):
         noUser = False
         incorrectPassword = False
         try:
+            # checks to see if a user with the given name exists
             checkUser = UserProfile.objects.get(userName=request.POST['useraccount'])
+            # if the name does exist, checks if the password is correct and sets incorrectPassword accordingly
             incorrectPassword = (checkUser.userPassword != request.POST['password'])
-        except:
+        except UserProfile.DoesNotExist:
+            # if there is no user with the given name, an exception is thrown, in which case, noUser is set to true
             noUser = True
         if noUser:
-            # following line will need to be replaced once createUser method working
-            checkUser = UserProfile(userName=request.POST['useraccount'], userPassword=request.POST['password'],
-                                    userType="TA")
-            checkUser.save()
-            return redirect("/home/")
+            # if the username does not yet exist, the user is returned to the login page.
+            # a message field would be a good thing to implement so the reason login was not completed is explained
+            # to the user
+            return render(request, "login.html")
         elif incorrectPassword:
+            # if the password is incorrect for the given name, the user is returned to the login page
+            # a message field would be a good thing to implement so the reason login was not completed is explained
+            # to the user
             return render(request, "login.html")
         else:
+            # if no issues are found, the user is redirected and the request.session["name"] field is set to the name
+            # of the user
             request.session["name"] = checkUser.userName
             return redirect("/home/")
 
 
 class Home(View):
     def get(self, request):
-        return render(request, "home.html", {})
+        # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
+        # they will fail the userAllowed test and be redirected back to the login page
+        # If the user is allowed then home is rendered like normal
+        if userAllowed(request.session["name"], ["SUPERVISOR", "INSTRUCTOR", "TA"]):
+            return render(request, "home.html")
+        else:
+            return redirect("/../")
 
 
 class CreateUser(View):
     def get(self, request):
-        if UserProfile.objects.get(userName=request.session["name"]).userType == "Supervisor":
+        if userAllowed(request.session["name"], ["SUPERVISOR"]):
             return render(request, "createuser.html", {})
         else:
             return redirect("/../home/")
@@ -53,7 +79,7 @@ class CreateUser(View):
 
 class CreateCourse(View):
     def get(self, request):
-        if UserProfile.objects.get(userName=request.session["name"]).userType == "Supervisor":
+        if userAllowed(request.session["name"], ['SUPERVISOR']):
             return render(request, "createcourse.html", {})
         else:
             return redirect("/../home/")
