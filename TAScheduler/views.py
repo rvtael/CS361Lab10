@@ -63,12 +63,16 @@ class Home(View):
 
 class CreateUser(View):
     def get(self, request):
+        # If the user does not have a valid name or if they are not of the type SUPERVISOR, they will fail
+        # userAllowed and will be redirected to home
         if userAllowed(request.session["name"], ["SUPERVISOR"]):
             return render(request, "createuser.html", {})
         else:
             return redirect("/../home/")
 
     def post(self, request):
+        # Takes user input of all parameters and creates a new user.
+        # Need to replace this line with UserManagement.createUser once that is implemented.
         newUser = UserProfile(userID=request.POST['userID'], userType=request.POST['userType'].upper(),
                               userPassword=request.POST['userPassword'], userName=request.POST['userName'],
                               userAddress=request.POST['userAddress'], userContact=request.POST['userContact'],
@@ -79,12 +83,16 @@ class CreateUser(View):
 
 class CreateCourse(View):
     def get(self, request):
+        # If the user does not have a valid name or if they are not of the type SUPERVISOR, they will fail
+        # userAllowed and be redirected to home
         if userAllowed(request.session["name"], ['SUPERVISOR']):
             return render(request, "createcourse.html", {})
         else:
             return redirect("/../home/")
 
     def post(self, request):
+        # Takes user input of all parameters and creates a new course.
+        # Need to replace this line with CourseManagement.createCourse once that is implemented.
         newCourse = Course(courseID=request.POST['ID'], name=request.POST['name'], location=request.POST['location'],
                            hours=request.POST['hours'], days=request.POST['days'],
                            instructor=UserProfile.objects.get(userName=request.POST['instructor']))
@@ -93,6 +101,10 @@ class CreateCourse(View):
         newCourse.labs.add(Lab.objects.get(name=request.POST['labs']))
         newCourse.save()
         return render(request, "createcourse.html")
+
+
+class CreateLab(View):
+    pass
 
 
 class ClassSchedules(View):
