@@ -6,7 +6,7 @@ from TAScheduler.Managment.UserManagement import UserManagement
 
 # A method to check if a user is allowed to view a certain webpage based on their userType. Included a check for if
 # the user is not logged in
-# name: The name of the current user. Should be gotten using request.session["name"]
+# request: The request of the current user. From this we can get the user's name using request.session["name"]
 # valid_types: A list of all the types allowed to access the page. Should be all caps.
 def userAllowed(request, valid_types):
     isValid = True
