@@ -37,7 +37,7 @@ class Home(View):
 
 class CreateUser(View):
     def get(self, request):
-        if UserProfile.objects.get(userName=request.session["name"]).userType == "Supervisor":
+        if UserProfile.objects.get(userName=request.session["name"]).userType == "SUPERVISOR":
             return render(request, "createuser.html", {})
         else:
             return redirect("/../home/")
@@ -53,7 +53,7 @@ class CreateUser(View):
 
 class CreateCourse(View):
     def get(self, request):
-        if UserProfile.objects.get(userName=request.session["name"]).userType == "Supervisor":
+        if UserProfile.objects.get(userName=request.session["name"]).userType == "SUPERVISOR":
             return render(request, "createcourse.html", {})
         else:
             return redirect("/../home/")
