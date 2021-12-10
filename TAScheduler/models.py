@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 
 
@@ -8,8 +7,7 @@ from django.db import models
 # are an instructor, TA, or Administrator
 class UserProfile(models.Model):
     userID = models.IntegerField(default=0)
-    userType = models.CharField(max_length=20,
-                                choices=[('SUPERVISOR', 'Supervisor'), ('INSTRUCTOR', 'Instructor'), ('TA', 'TA')])
+    userType = models.CharField(max_length=20, choices=[('SUPERVISOR', 'Supervisor'), ('INSTRUCTOR', 'Instructor'), ('TA', 'TA')])
     userPassword = models.CharField(max_length=20)
     userName = models.CharField(max_length=20)
     userAddress = models.CharField(max_length=20)
