@@ -74,7 +74,7 @@ class UserManagement(object):
         if(not(isinstance(password, str))):
             raise TypeError("Address entered is not of type str")
         if (not(usertype in ["SUPERVISOR", "INSTRUCTOR", "TA"])):
-            raise TypeError("Usertyoe entered is not a SUPERVISOR,INSTRUCTOR, or TA")
+            raise TypeError("Usertype entered is not a SUPERVISOR,INSTRUCTOR, or TA")
 
         try:
             self.findUser(Id)
