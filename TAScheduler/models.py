@@ -12,6 +12,7 @@ class UserProfile(models.Model):
                                 choices=[('SUPERVISOR', 'Supervisor'), ('INSTRUCTOR', 'Instructor'), ('TA', 'TA')])
     userPassword = models.CharField(max_length=20)
     userName = models.CharField(max_length=20)
+    userSSN = models.IntegerField(max_length=9, min_length=9)
     userAddress = models.CharField(max_length=20)
     userContact = models.IntegerField(default=0)
     userEmail = models.CharField(max_length=20)
