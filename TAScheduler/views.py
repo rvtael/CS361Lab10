@@ -8,13 +8,11 @@ from TAScheduler.Managment.UserManagement import UserManagement
 # the user is not logged in
 # name: The name of the current user. Should be gotten using request.session["name"]
 # valid_types: A list of all the types allowed to access the page. Should be all caps.
-def userAllowed(request, valid_types):
+def userAllowed(name, valid_types):
     isValid = True
     try:
-        if not (UserProfile.objects.get(userName=request.session["name"]).userType in valid_types):
+        if not (UserProfile.objects.get(userName=name).userType in valid_types):
             isValid = False
-    except KeyError:
-        isValid = False
     except UserProfile.DoesNotExist:
         isValid = False
     return isValid
@@ -57,7 +55,7 @@ class Home(View):
         # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
         # they will fail the userAllowed test and be redirected back to the login page
         # If the user is allowed then home is rendered like normal
-        if userAllowed(request, ["SUPERVISOR", "INSTRUCTOR", "TA"]):
+        if userAllowed(request.session["name"], ["SUPERVISOR", "INSTRUCTOR", "TA"]):
             return render(request, "home.html")
         else:
             return redirect("/../")
@@ -67,7 +65,7 @@ class CreateUser(View):
     def get(self, request):
         # If the user does not have a valid name or if they are not of the type SUPERVISOR, they will fail
         # userAllowed and will be redirected to home
-        if userAllowed(request, ["SUPERVISOR"]):
+        if userAllowed(request.session["name"], ["SUPERVISOR"]):
             return render(request, "createuser.html", {})
         else:
             return redirect("/../home/")
@@ -87,7 +85,7 @@ class CreateCourse(View):
     def get(self, request):
         # If the user does not have a valid name or if they are not of the type SUPERVISOR, they will fail
         # userAllowed and be redirected to home
-        if userAllowed(request, ['SUPERVISOR']):
+        if userAllowed(request.session["name"], ['SUPERVISOR']):
             return render(request, "createcourse.html", {})
         else:
             return redirect("/../home/")
@@ -103,6 +101,34 @@ class CreateCourse(View):
         newCourse.labs.add(Lab.objects.get(name=request.POST['labs']))
         newCourse.save()
         return render(request, "createcourse.html")
+
+
+class EditCourse(View):
+    def get(self, request):
+        # If the user does not have a valid name or if they are not of the type SUPERVISOR, they will fail
+        # userAllowed and be redirected to home
+        if userAllowed(request.session["name"], ['SUPERVISOR']):
+            return render(request, "editcourse.html", {})
+        else:
+            return redirect("/../home/")
+
+    def post(self, request):
+        results = Course.objects.all()
+        return render(request, "editcourse.html", {"Course": results})
+
+
+class EditUser(View):
+    def get(self, request):
+        # If the user does not have a valid name or if they are not of the type SUPERVISOR, they will fail
+        # userAllowed and be redirected to home
+        if userAllowed(request.session["name"], ['SUPERVISOR']):
+            return render(request, "edituser.html", {})
+        else:
+            return redirect("/../home/")
+
+    def post(self, request):
+        results = UserProfile.objects.all()
+        return render(request, "edituser.html", {"UserProfile": results})
 
 
 class CreateLab(View):
