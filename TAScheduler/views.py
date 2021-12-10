@@ -151,3 +151,14 @@ class CourseAssignments(View):
 
 class TAList(View):
     pass
+
+
+class AccountSettings(View):
+    def get(self, request):
+        # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
+        # they will fail the userAllowed test and be redirected back to the login page
+        # If the user is allowed then home is rendered like normal
+        if userAllowed(request, ["SUPERVISOR", "INSTRUCTOR", "TA"]):
+            return render(request, "accountsettings.html")
+        else:
+            return redirect("/../")
