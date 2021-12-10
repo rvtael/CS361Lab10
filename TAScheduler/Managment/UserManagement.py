@@ -105,7 +105,6 @@ class UserManagement(object):
     # UserId(in) - Id of the user
     def deleteUser(self, Id):
         UserProfile.objects.delete(self.findUser(Id))
-        pass
 
     # Preconditions: The user has to have been instantiated
     # There are accounts to display
