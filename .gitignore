@@ -20,3 +20,4 @@ TAScheduler/__pycache__/apps.cpython-310.pyc
 .idea/misc.xml
 .idea/CS361Project.iml
 .idea/misc.xml
+db.sqlite3

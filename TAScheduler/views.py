@@ -159,6 +159,6 @@ class AccountSettings(View):
         # they will fail the userAllowed test and be redirected back to the login page
         # If the user is allowed then home is rendered like normal
         if userAllowed(request, ["SUPERVISOR", "INSTRUCTOR", "TA"]):
-            return render(request, "accountsettings.html.html")
+            return render(request, "accountsettings.html")
         else:
             return redirect("/../")
