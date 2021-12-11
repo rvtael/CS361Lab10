@@ -14,7 +14,7 @@ from django.db import connection
 #Not going to use  SSN number, going to be using the e-mail
 #make sure to update all method parameters to new database standards from tonight's meeting on Friday
 
-#comment to test pullrequest
+#comment to test pull request
 
 class userManagement:
 
