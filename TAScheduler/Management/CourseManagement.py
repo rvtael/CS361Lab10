@@ -13,11 +13,11 @@ class CourseManagement:
     # Course Name(in) - Name of the course
     # Course Time(in) - Time of the course
     # Course Days(in) - Days of the course
-    # Course Hoursin) - Hours of the course
+    # Course Hours(in) - Hours of the course
     # Course Instructor(in) - Instructor of the course
     # Course TA(in) -TA of the course
     @staticmethod
-    def createCourse(courseName, courseTime, courseDays, courseHours, courseInstructor, courseTA):
+    def createCourse(course_name, course_time, course_days, course_hours, course_instructor, course_ta):
         pass
 
     # Preconditions: The user has to have been instantiated.
@@ -27,11 +27,11 @@ class CourseManagement:
     # Course Name(in) - Name of the course
     # Course Time(in) - Time of the course
     # Course Days(in) - Days of the course
-    # Course Hoursin) - Hours of the course
+    # Course Hours(in) - Hours of the course
     # Course Instructor(in) - Instructor of the course
     # Course TA(in) -TA of the course
     @staticmethod
-    def editCourse(course, courseName, courseTime, courseDays, courseHours, courseInstructor, courseTA):
+    def editCourse(course_name, course_time, course_days, course_hours, course_instructor, course_ta):
         pass
 
     # Preconditions: The user has to have been instantiated.
@@ -40,7 +40,7 @@ class CourseManagement:
     # Side-effects: Course is deleted and removed from the database
     # Course Name(in) - Name of the course
     @staticmethod
-    def deleteCourse(course, courseName):
+    def deleteCourse(course_name):
         pass
 
     # Preconditions: The user has to have been instantiated
@@ -49,7 +49,7 @@ class CourseManagement:
     # Side-effects: None
     # Search Prompt(in): Course Name you are searching for
     @staticmethod
-    def populateSearchClass(searchPromp):
+    def populateSearchClass(search_prompt):
         pass
 
     # Preconditions: The user has to have been instantiated
