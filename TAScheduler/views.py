@@ -105,7 +105,7 @@ class CreateCourse(View):
                            hours=request.POST['hours'], days=request.POST['days'],
                            instructor=UserProfile.objects.get(username=request.POST['instructor']))
         newCourse.save()
-        newCourse.TAs.add(UserProfile.objects.get(userName=request.POST['TAs']))
+        newCourse.TAs.add(UserProfile.objects.get(username=request.POST['TAs']))
         newCourse.labs.add(Lab.objects.get(name=request.POST['labs']))
         newCourse.save()
         return render(request, "createcourse.html")
