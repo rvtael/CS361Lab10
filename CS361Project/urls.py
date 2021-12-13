@@ -16,7 +16,8 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from TAScheduler.views import Login, Home, CreateUser, CreateCourse, AccountSettings, EditUser, EditCourse
+from TAScheduler.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
