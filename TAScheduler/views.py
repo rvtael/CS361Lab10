@@ -142,12 +142,16 @@ class CreateLab(View):
         # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
         # they will fail the userAllowed test and be redirected back to the login page
         # If the user is allowed then home is rendered like normal
-        if userAllowed(request, ["SUPERVISOR"]):
-            LabManagement.createLab(request, request.POST['labID'], request.POST['labName'],
+       if userAllowed(request, ["SUPERVISOR"]):
+            return render(request, "createlab.html")
+       else:
+            return redirect("/../home/")
+            
+    def post(self, request):
+        LabManagement.createLab(request, request.POST['labID'], request.POST['labName'],
             request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'], 
             request.POST['labInstructor'], request.POST['labTA'])
-        else:
-            return redirect("/../home/")
+        return render(request, "createlab.html")
 
 class EditLab(View):
     def get(self, request):
@@ -155,13 +159,16 @@ class EditLab(View):
         # they will fail the userAllowed test and be redirected back to the login page
         # If the user is allowed then home is rendered like normal
         if userAllowed(request, ["SUPERVISOR"]):
-            LabManagement.editLab(request, request.POST['labID'], request.POST['labName'],
-            request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'], 
-            request.POST['labInstructor'], request.POST['labTA'])
-            
             return render(request, "editlab.html")
         else:
             return redirect("/../home/")
+            
+    def post(self, request):
+        LabManagement.editLab(request, request.POST['labID'], request.POST['labName'],
+            request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'], 
+            request.POST['labInstructor'], request.POST['labTA'])
+        return render(request, "editlab.html")
+
           
 
 class ClassSchedules(View):
