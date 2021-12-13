@@ -7,7 +7,6 @@ from django.shortcuts import render
 class LabManagement(object):
 
 
-
 # class Lab(models.Model):
 #    labID = models.IntegerField(default=0)
 #    name = models.CharField(max_length=20)
@@ -53,7 +52,7 @@ class LabManagement(object):
         return "Lab was created"
 
     # Side-effects: Lab is edited inside the database
-    #Lab ID(in) - Id of the lab
+    # Lab ID(in) - Id of the lab
     # Lab Name(in) - Name of the lab
     # Lab Hours(in) - Hours of the lab
     # Lab Location(in) - Location of the lab
@@ -94,11 +93,11 @@ class LabManagement(object):
 
         return "The lab was successfully editted"
 
-	# Preconditions: The user has to have been instantiated.
+    # Preconditions: The user has to have been instantiated.
     # The user must be of type administrator
     # Postconditions:Deletes a lab
-	# Side-effects: Lab is deleted and removed from the database
-	# Lab Name(in) - Name of the course
+	  # Side-effects: Lab is deleted and removed from the database
+	  # Lab Name(in) - Name of the course
     def deleteLab(request, Id):
         if(not(isinstance(Id, int))):
             raise TypeError("Id entered is not of type int")

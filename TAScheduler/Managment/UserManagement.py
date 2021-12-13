@@ -13,9 +13,6 @@ class UserManagement(object):
     # UserId(in) - Id of the user
     # User Name(in) - Name of the user
     # User Contact(in) - Contact of the user
-    # User Address(in) - Address of the user
-    # User Password(in) - Password of the user
-    # User Email(in) - Email of the user
     # User Type(in) - Type of the user
     def createUser(self, Id, name, contact, address, password, email,usertype):
         if(not(isinstance(Id, int))):
@@ -30,8 +27,6 @@ class UserManagement(object):
             raise TypeError("Address entered is not of type str")
         if(not(isinstance(password, str))):
             raise TypeError("Address entered is not of type str")
-        if (not(usertype in ["SUPERVISOR", "INSTRUCTOR", "TA"])):
-            raise TypeError("Usertyoe entered is not a SUPERVISOR,INSTRUCTOR, or TA")
 
         try:
             self.findUser(Id)
@@ -56,9 +51,7 @@ class UserManagement(object):
     # UserId(in) - Id of the user
     # User Name(in) - Name of the user
     # User Contact(in) - Contact of the user
-    # User Address(in) - Address of the user
-    # User Password(in) - Password of the user
-    # User Email(in) - Email of the user
+
     # User Type(in) - Type of the user
     def editUser(self, Id, name, contact, email, address, password, usertype):
         if(not(isinstance(Id, int))):
@@ -73,8 +66,7 @@ class UserManagement(object):
             raise TypeError("Address entered is not of type str")
         if(not(isinstance(password, str))):
             raise TypeError("Address entered is not of type str")
-        if (not(usertype in ["SUPERVISOR", "INSTRUCTOR", "TA"])):
-            raise TypeError("Usertype entered is not a SUPERVISOR,INSTRUCTOR, or TA")
+
 
         try:
             self.findUser(Id)
@@ -104,11 +96,11 @@ class UserManagement(object):
     # Side-effects: User is deleted so it is removed from the database
     # UserId(in) - Id of the user
     def deleteUser(self, Id):
-        UserProfile.objects.delete(self.findUser(Id))
+
 
     # Preconditions: The user has to have been instantiated
     # There are accounts to display
     # Postconditions: All accounts are displayed
     # Side-effects: None
     def populateList(self):
-        pass
+

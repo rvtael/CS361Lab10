@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -7,9 +8,11 @@ from django.db import models
 # are an instructor, TA, or Administrator
 class UserProfile(models.Model):
     userID = models.IntegerField(default=0)
-    userType = models.CharField(max_length=20, choices=[('SUPERVISOR', 'Supervisor'), ('INSTRUCTOR', 'Instructor'), ('TA', 'TA')])
+    userType = models.CharField(max_length=20,
+                                choices=[('SUPERVISOR', 'Supervisor'), ('INSTRUCTOR', 'Instructor'), ('TA', 'TA')])
     userPassword = models.CharField(max_length=20)
     userName = models.CharField(max_length=20)
+    userSSN = models.IntegerField(max_length=9, min_length=9)
     userAddress = models.CharField(max_length=20)
     userContact = models.IntegerField(default=0)
     userEmail = models.CharField(max_length=20)
@@ -37,6 +40,9 @@ class Course(models.Model):
     instructor = models.ForeignKey(UserProfile, on_delete=models.PROTECT)
     TAs = models.ManyToManyField(UserProfile, related_name="TAToCourse")
     labs = models.ManyToManyField(Lab)
+
+    # class Meta:
+    #     db_table = "CourseList"
 
 
 # Schedule is a tool to be used by users to display the events they have going on in a week, be that Labs or courses.
