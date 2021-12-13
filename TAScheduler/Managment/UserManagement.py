@@ -1,6 +1,4 @@
 from django.db import models
-import TAScheduler.models
-from TAScheduler import models
 from TAScheduler.models import UserProfile
 
 class UserManagement(object):
@@ -15,9 +13,6 @@ class UserManagement(object):
     # UserId(in) - Id of the user
     # User Name(in) - Name of the user
     # User Contact(in) - Contact of the user
-    # User SSN(in) - SSN of the user
-    # User Address(in) - Address of the user
-    # User Password(in) - Password of the user
     # User Type(in) - Type of the user
     def createUser(self, Id, name, contact, address, password, email,usertype):
         if(not(isinstance(Id, int))):
@@ -32,8 +27,6 @@ class UserManagement(object):
             raise TypeError("Address entered is not of type str")
         if(not(isinstance(password, str))):
             raise TypeError("Address entered is not of type str")
-        if(not(isinstance(usertype, int))):
-            raise TypeError("SSN entered is not of type int")
 
         try:
             self.findUser(Id)
@@ -48,7 +41,7 @@ class UserManagement(object):
                 userEmail = email
             )
             return
-        
+
         raise TypeError("This user already exists: ")
 
     # Preconditions: The user has to have been instantiated.
@@ -58,9 +51,7 @@ class UserManagement(object):
     # UserId(in) - Id of the user
     # User Name(in) - Name of the user
     # User Contact(in) - Contact of the user
-    # User SSN(in) - SSN of the user
-    # User Address(in) - Address of the user
-    # User Password(in) - Password of the user
+
     # User Type(in) - Type of the user
     def editUser(self, Id, name, contact, email, address, password, usertype):
         if(not(isinstance(Id, int))):
@@ -75,8 +66,7 @@ class UserManagement(object):
             raise TypeError("Address entered is not of type str")
         if(not(isinstance(password, str))):
             raise TypeError("Address entered is not of type str")
-        if(not(isinstance(usertype, int))):
-            raise TypeError("SSN entered is not of type int")
+
 
         try:
             self.findUser(Id)
@@ -95,7 +85,7 @@ class UserManagement(object):
             profile = UserProfile.objects.get(userID = Id)
         except UserProfile.DoesNotExist:
             profile = None
-        
+
         if(profile == None):
             raise TypeError("This ID does not exist")
 
@@ -106,13 +96,11 @@ class UserManagement(object):
     # Side-effects: User is deleted so it is removed from the database
     # UserId(in) - Id of the user
     def deleteUser(self, Id):
-        profile = self.findUser(Id)
-        UserProfile.objects.delete(profile)
-        pass
+
 
     # Preconditions: The user has to have been instantiated
     # There are accounts to display
     # Postconditions: All accounts are displayed
     # Side-effects: None
     def populateList(self):
-        pass
+

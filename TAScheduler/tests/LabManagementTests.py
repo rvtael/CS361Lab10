@@ -1,6 +1,6 @@
 import unittest
 
-from User import User
+from TAScheduler.User.User import User
 
 
 class CreateLabTests(unittest.TestCase):

@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import UserProfile, Course, Lab
+from TAScheduler.Management.UserManagement import UserManagement
+
 
 # Create your views here.
 # A method to check if a user is allowed to view a certain webpage based on their userType. Included a check for if
@@ -17,6 +19,7 @@ def userAllowed(request, valid_types):
     except UserProfile.DoesNotExist:
         isValid = False
     return isValid
+    
     
 class Login(View):
     def get(self, request):
@@ -102,6 +105,7 @@ class CreateCourse(View):
         newCourse.save()
         return render(request, "createcourse.html")
 
+      
 class AccountSettings(View):
     def get(self, request):
         # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
@@ -130,6 +134,7 @@ class EditCourse(View):
             return render(request, "editcourse.html")
         else:
             return redirect("/../home/")
+          
 
 class ClassSchedules(View):
     pass
