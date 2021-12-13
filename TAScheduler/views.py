@@ -3,39 +3,40 @@ from django.views import View
 from .models import UserProfile, Course, Lab
 from TAScheduler.Management.UserManagement import UserManagement
 from TAScheduler.Management.CourseManagement import CourseManagement
-from TAScheduler.Managment.LabManagement import LabManagement
+from TAScheduler.Management.LabManagement import LabManagement
 
 
 # Create your views here.
 # A method to check if a user is allowed to view a certain webpage based on their userType. Included a check for if
 # the user is not logged in
-# name: The name of the current user. Should be gotten using request.session["name"]
+# name: The username of the current user. Should be gotten using request.session["username"]
 # valid_types: A list of all the types allowed to access the page. Should be all caps.
 def userAllowed(request, valid_types):
     isValid = True
     try:
-        if not (UserProfile.objects.get(userName=request.session["name"]).userType in valid_types):
+        if not (UserManagement.findUser(username=request.session["username"]).userType in valid_types):
             isValid = False
     except KeyError:
         isValid = False
-    except UserProfile.DoesNotExist:
-        isValid = False
     return isValid
-    
-    
+
+
 class Login(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         return render(request, "login.html")
 
-    def post(self, request):
+    @staticmethod
+    def post(request):
         noUser = False
         incorrectPassword = False
+        checkUser = UserProfile
         try:
             # checks to see if a user with the given name exists
-            checkUser = UserProfile.objects.get(userName=request.POST['useraccount'])
+            checkUser = UserManagement.findUser(username=request.POST["useraccount"])
             # if the name does exist, checks if the password is correct and sets incorrectPassword accordingly
-            incorrectPassword = (checkUser.userPassword != request.POST['password'])
-        except UserProfile.DoesNotExist:
+            incorrectPassword = (checkUser.password != request.POST['password'])
+        except TypeError:
             # if there is no user with the given name, an exception is thrown, in which case, noUser is set to true
             noUser = True
         if noUser:
@@ -49,14 +50,15 @@ class Login(View):
             # to the user
             return render(request, "login.html")
         else:
-            # if no issues are found, the user is redirected and the request.session["name"] field is set to the name
-            # of the user
-            request.session["name"] = checkUser.userName
+            # if no issues are found, the user is redirected and the request.session["username"] field is set to the
+            # username of the user
+            request.session["username"] = checkUser.username
             return redirect("/home/")
 
 
 class Home(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
         # they will fail the userAllowed test and be redirected back to the login page
         # If the user is allowed then home is rendered like normal
@@ -67,7 +69,8 @@ class Home(View):
 
 
 class CreateUser(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         # If the user does not have a valid name or if they are not of the type SUPERVISOR, they will fail
         # userAllowed and will be redirected to home
         if userAllowed(request, ["SUPERVISOR"]):
@@ -75,19 +78,19 @@ class CreateUser(View):
         else:
             return redirect("/../home/")
 
-    def post(self, request):
+    @staticmethod
+    def post(request):
         # Takes user input of all parameters and creates a new user.
-        # Need to replace this line with UserManagement.createUser once that is implemented.
-        newUser = UserProfile(userID=request.POST['userID'], userType=request.POST['userType'].upper(),
-                              userPassword=request.POST['userPassword'], userName=request.POST['userName'],
-                              userAddress=request.POST['userAddress'], userContact=request.POST['userContact'],
-                              userEmail=request.POST['userEmail'])
-        newUser.save()
+        UserManagement.createUser(user_id=request.POST["userID"], user_type=request.POST["userType"],
+                                  username=request.POST["username"], password=request.POST["password"],
+                                  name=request.POST["name"], address=request.POST["address"],
+                                  phone=request.POST["phone"], email=request.POST["email"])
         return render(request, "createuser.html")
 
 
 class CreateCourse(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         # If the user does not have a valid name or if they are not of the type SUPERVISOR, they will fail
         # userAllowed and be redirected to home
         if userAllowed(request, ['SUPERVISOR']):
@@ -95,31 +98,39 @@ class CreateCourse(View):
         else:
             return redirect("/../home/")
 
-    def post(self, request):
+    @staticmethod
+    def post(request):
         # Takes user input of all parameters and creates a new course.
         # Need to replace this line with CourseManagement.createCourse once that is implemented.
         newCourse = Course(courseID=request.POST['ID'], name=request.POST['name'], location=request.POST['location'],
                            hours=request.POST['hours'], days=request.POST['days'],
-                           instructor=UserProfile.objects.get(userName=request.POST['instructor']))
+                           instructor=UserProfile.objects.get(username=request.POST['instructor']))
         newCourse.save()
-        newCourse.TAs.add(UserProfile.objects.get(userName=request.POST['TAs']))
+        newCourse.TAs.add(UserProfile.objects.get(username=request.POST['TAs']))
         newCourse.labs.add(Lab.objects.get(name=request.POST['labs']))
         newCourse.save()
         return render(request, "createcourse.html")
 
-      
+
 class AccountSettings(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
         # they will fail the userAllowed test and be redirected back to the login page
         # If the user is allowed then home is rendered like normal
         if userAllowed(request, ["SUPERVISOR", "INSTRUCTOR", "TA"]):
             return render(request, "accountsettings.html")
         else:
-            return redirect("/../")
+            return redirect("/../home")
+
+    def post(self, request):
+        # TODO: implement post
+        pass
+
 
 class EditUser(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
         # they will fail the userAllowed test and be redirected back to the login page
         # If the user is allowed then home is rendered like normal
@@ -127,8 +138,15 @@ class EditUser(View):
             return render(request, "edituser.html")
         else:
             return redirect("/../home/")
+
+    def post(self, request):
+        # TODO: implement post
+        pass
+
+
 class EditCourse(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
         # they will fail the userAllowed test and be redirected back to the login page
         # If the user is allowed then home is rendered like normal
@@ -137,24 +155,34 @@ class EditCourse(View):
         else:
             return redirect("/../home/")
 
+    @staticmethod
+    def post(request):
+        # TODO: implement post
+        pass
+
+
 class CreateLab(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
         # they will fail the userAllowed test and be redirected back to the login page
         # If the user is allowed then home is rendered like normal
-       if userAllowed(request, ["SUPERVISOR"]):
+        if userAllowed(request, ["SUPERVISOR"]):
             return render(request, "createlab.html")
-       else:
+        else:
             return redirect("/../home/")
-            
-    def post(self, request):
-        LabManagement.createLab(request, request.POST['labID'], request.POST['labName'],
-            request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'], 
-            request.POST['labInstructor'], request.POST['labTA'])
+
+    @staticmethod
+    def post(request):
+        LabManagement.createLab(request.POST['labID'], request.POST['labName'],
+                                request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'],
+                                request.POST['labInstructor'], request.POST['labTA'])
         return render(request, "createlab.html")
 
+
 class EditLab(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
         # they will fail the userAllowed test and be redirected back to the login page
         # If the user is allowed then home is rendered like normal
@@ -162,20 +190,16 @@ class EditLab(View):
             return render(request, "editlab.html")
         else:
             return redirect("/../home/")
-            
-    def post(self, request):
-        LabManagement.editLab(request, request.POST['labID'], request.POST['labName'],
-            request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'], 
-            request.POST['labInstructor'], request.POST['labTA'])
+
+    @staticmethod
+    def post(request):
+        LabManagement.editLab(request.POST['labID'], request.POST['labName'],
+                              request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'],
+                              request.POST['labInstructor'], request.POST['labTA'])
         return render(request, "editlab.html")
 
-          
 
 class ClassSchedules(View):
-    pass
-
-
-class UserManagement(View):
     pass
 
 
