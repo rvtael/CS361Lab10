@@ -1,10 +1,7 @@
-from django.db import models
 from TAScheduler.models import UserProfile
 
-class UserManagement(object):
 
-    def __init__(self, authID=""):
-        pass
+class UserManagement(object):
 
     # Preconditions: The user has to have been instantiated.
     # The user must be of type administrator
@@ -14,31 +11,21 @@ class UserManagement(object):
     # User Name(in) - Name of the user
     # User Contact(in) - Contact of the user
     # User Type(in) - Type of the user
-    def createUser(self, Id, name, contact, address, password, email,usertype):
-        if(not(isinstance(Id, int))):
-            raise TypeError("Id entered is not of type int")
-        if(not(isinstance(name, str))):
-            raise TypeError("Name entered is not of type str")
-        if(not(isinstance(contact, str))):
-            raise TypeError("Contact entered is not of type str")
-        if(not(isinstance(email, str))):
-            raise TypeError("Email entered is not of type str")
-        if(not(isinstance(address, str))):
-            raise TypeError("Address entered is not of type str")
-        if(not(isinstance(password, str))):
-            raise TypeError("Address entered is not of type str")
+    @staticmethod
+    def createUser(Id, name, contact, address, password, email, usertype):
+        UserManagement.__inputErrorCheck(Id, name, contact, address, password, email, usertype)
 
         try:
-            self.findUser(Id)
-        except TypeError: 
+            UserManagement.findUser(Id)
+        except TypeError:
             UserProfile.objects.create(
-                userID = Id,
-                userType = usertype,
-                userPassword = password,
-                userName = name,
-                userAddress = address,
-                userContact = contact,
-                userEmail = email
+                userID=Id,
+                userType=usertype,
+                userPassword=password,
+                userName=name,
+                userAddress=address,
+                userContact=contact,
+                userEmail=email
             )
             return
 
@@ -53,54 +40,66 @@ class UserManagement(object):
     # User Contact(in) - Contact of the user
 
     # User Type(in) - Type of the user
-    def editUser(self, Id, name, contact, email, address, password, usertype):
-        if(not(isinstance(Id, int))):
-            raise TypeError("Id entered is not of type int")
-        if(not(isinstance(name, str))):
-            raise TypeError("Name entered is not of type str")
-        if(not(isinstance(contact, str))):
-            raise TypeError("Contact entered is not of type str")
-        if(not(isinstance(email, str))):
-            raise TypeError("Email entered is not of type str")
-        if(not(isinstance(address, str))):
-            raise TypeError("Address entered is not of type str")
-        if(not(isinstance(password, str))):
-            raise TypeError("Address entered is not of type str")
-
+    @staticmethod
+    def editUser(Id, name, contact, email, address, password, usertype):
+        UserManagement.__inputErrorCheck(Id, name, contact, email, address, password, usertype)
 
         try:
-            self.findUser(Id)
-        except TypeError: 
-             raise TypeError("This user already exists(editUser): ")
+            UserManagement.findUser(Id)
+        except TypeError:
+            raise TypeError("This user already exists(editUser): ")
 
     # Preconditions: The user has to have been instantiated
     # There are accounts to display
     # Postconditions: Displays the user
     # Side-effects: None
     # UserId(in) - Id of the user
-    def findUser(self, Id):
-        if(not(isinstance(Id, int))):
+    @staticmethod
+    def findUser(Id):
+        if not (isinstance(Id, int)):
             raise TypeError("Id entered is not of type int")
         try:
-            profile = UserProfile.objects.get(userID = Id)
+            profile = UserProfile.objects.get(userID=Id)
         except UserProfile.DoesNotExist:
             profile = None
 
-        if(profile == None):
+        if profile is None:
             raise TypeError("This ID does not exist")
 
         return profile
+
     # Preconditions: The user has to have been instantiated
     # The user must be of type administrator
     # Postconditions: User is deleted
     # Side-effects: User is deleted so it is removed from the database
     # UserId(in) - Id of the user
-    def deleteUser(self, Id):
-
+    @staticmethod
+    def deleteUser(Id):
+        UserManagement.findUser(Id).delete()
 
     # Preconditions: The user has to have been instantiated
     # There are accounts to display
     # Postconditions: All accounts are displayed
     # Side-effects: None
-    def populateList(self):
+    @staticmethod
+    def populateList():
+        pass
 
+    @staticmethod
+    def __inputErrorCheck(Id, name, contact, email, address, password, usertype):
+        if not (isinstance(Id, int)):
+            raise TypeError("Id entered is not of type int")
+        if not (isinstance(name, str)):
+            raise TypeError("Name entered is not of type str")
+        if not (isinstance(contact, str)):
+            raise TypeError("Contact entered is not of type str")
+        if not (isinstance(email, str)):
+            raise TypeError("Email entered is not of type str")
+        if not (isinstance(address, str)):
+            raise TypeError("Address entered is not of type str")
+        if not (isinstance(password, str)):
+            raise TypeError("Password entered is not of type str")
+        if not (isinstance(usertype, str)):
+            raise TypeError("userType entered is not of type str")
+        if not(usertype in ["SUPERVISOR", "INSTRUCTOR", "TA"]):
+            raise ValueError("userType entered is not a valid userType")
