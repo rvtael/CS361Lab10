@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import UserProfile, Course, Lab
+<<<<<<< Updated upstream
 from TAScheduler.Managment.UserManagement import UserManagement
 
+=======
+>>>>>>> Stashed changes
 
 # Create your views here.
 class Login(View):
