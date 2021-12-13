@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .models import UserProfile, Course, Lab
 from TAScheduler.Management.UserManagement import UserManagement
+from TAScheduler.Management.CourseManagement import CourseManagement
 
 
 # Create your views here.
