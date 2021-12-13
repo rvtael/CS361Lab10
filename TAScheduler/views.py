@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import UserProfile, Course, Lab
-from TAScheduler.Managment.UserManagement import UserManagement
 
-
+# Create your views here.
 # A method to check if a user is allowed to view a certain webpage based on their userType. Included a check for if
 # the user is not logged in
 # request: The request of the current user. From this we can get the user's name using request.session["name"]
@@ -18,8 +17,8 @@ def userAllowed(request, valid_types):
     except UserProfile.DoesNotExist:
         isValid = False
     return isValid
-
-
+    
+    
 class Login(View):
     def get(self, request):
         return render(request, "login.html")
@@ -104,10 +103,36 @@ class CreateCourse(View):
         newCourse.save()
         return render(request, "createcourse.html")
 
+      
+class AccountSettings(View):
+    def get(self, request):
+        # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
+        # they will fail the userAllowed test and be redirected back to the login page
+        # If the user is allowed then home is rendered like normal
+        if userAllowed(request, ["SUPERVISOR", "INSTRUCTOR", "TA"]):
+            return render(request, "accountsettings.html")
+        else:
+            return redirect("/../")
 
-class CreateLab(View):
-    pass
-
+class EditUser(View):
+    def get(self, request):
+        # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
+        # they will fail the userAllowed test and be redirected back to the login page
+        # If the user is allowed then home is rendered like normal
+        if userAllowed(request, ["SUPERVISOR"]):
+            return render(request, "edituser.html")
+        else:
+            return redirect("/../home/")
+class EditCourse(View):
+    def get(self, request):
+        # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
+        # they will fail the userAllowed test and be redirected back to the login page
+        # If the user is allowed then home is rendered like normal
+        if userAllowed(request, ["SUPERVISOR"]):
+            return render(request, "editcourse.html")
+        else:
+            return redirect("/../home/")
+          
 
 class ClassSchedules(View):
     pass

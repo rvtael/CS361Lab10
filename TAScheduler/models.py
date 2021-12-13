@@ -40,6 +40,9 @@ class Course(models.Model):
     TAs = models.ManyToManyField(UserProfile, related_name="TAToCourse")
     labs = models.ManyToManyField(Lab)
 
+    # class Meta:
+    #     db_table = "CourseList"
+
 
 # Schedule is a tool to be used by users to display the events they have going on in a week, be that Labs or courses.
 class Schedule(models.Model):
