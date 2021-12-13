@@ -80,7 +80,7 @@ class LabManagement(object):
             raise TypeError("Lab TA's type is not of type TA")
         
         if(not(Lab.objects.filter(labId = Id).exists())):
-            raise TypeError("This Lab does not exist")
+            return "This Lab does not exist"
 
         edittedLab = Lab.objects.get(labId = Id)
         
