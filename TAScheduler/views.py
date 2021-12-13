@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import UserProfile, Course, Lab
-from TAScheduler.Managment.UserManagement import UserManagement
-from TAScheduler.Managment.CourseManagement import CourseManagement
 
 # Create your views here.
 # A method to check if a user is allowed to view a certain webpage based on their userType. Included a check for if
