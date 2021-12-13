@@ -3,8 +3,11 @@
 # deleteCourse(courseName)
 # populateSearchClass(searchPromp)  should change class to course
 # displayAllCourse()
+from TAScheduler.models import Course
+from TAScheduler.models import UserProfile
 
-class CourseManagement:
+
+class CourseManagement(object):
 
     # Preconditions: The user has to have been instantiated.
     # The user must be of type administrator
@@ -17,8 +20,14 @@ class CourseManagement:
     # Course Instructor(in) - Instructor of the course
     # Course TA(in) -TA of the course
     @staticmethod
-    def createCourse(course_name, course_time, course_days, course_hours, course_instructor, course_ta):
-        pass
+    def createCourse(Id, courseName, courseLocation, courseDays, courseHours, courseInstructor, courseTAs, courseLabs):
+        CourseManagement.inputErrorChecker(Id, courseName, courseLocation, courseDays, courseHours, courseInstructor,
+                                             courseTAs, courseLabs)
+
+        Course.objects.create(courseID=Id, name=courseName, location=courseLocation,
+                              hours=courseHours, days=courseDays, instructor=courseInstructor, TAs=courseTAs,
+                              labs=courseLabs)
+        return "Course was created"
 
     # Preconditions: The user has to have been instantiated.
     # The user must be of type administrator
@@ -31,8 +40,23 @@ class CourseManagement:
     # Course Instructor(in) - Instructor of the course
     # Course TA(in) -TA of the course
     @staticmethod
-    def editCourse(course_name, course_time, course_days, course_hours, course_instructor, course_ta):
-        pass
+    def editCourse(Id, courseName, courseLocation, courseDays, courseHours, courseInstructor, courseTAs, courseLabs):
+        CourseManagement.inputErrorChecker(Id, courseName, courseLocation, courseDays, courseHours, courseInstructor,
+                                             courseTAs, courseLabs)
+        if not (Course.objects.filter(courseId=Id).exists()):
+            raise TypeError("This course does not exist")
+
+        editedCourse = Course.objects.get(courseId=Id)
+
+        editedCourse.name = courseName
+        editedCourse.location = courseLocation
+        editedCourse.hours = courseHours
+        editedCourse.days = courseDays
+        editedCourse.instructor = courseInstructor
+        editedCourse.TAs = courseTAs
+        editedCourse.labs = courseLabs
+
+        return "The course was successfully edited"
 
     # Preconditions: The user has to have been instantiated.
     # The user must be of type administrator
@@ -40,8 +64,17 @@ class CourseManagement:
     # Side-effects: Course is deleted and removed from the database
     # Course Name(in) - Name of the course
     @staticmethod
-    def deleteCourse(course_name):
-        pass
+    def deleteCourse(Id):
+        if not (isinstance(Id, int)):
+            raise TypeError("Id entered is not of type int")
+
+        retMsg = "Course has been successfully deleted"
+        if not (Course.objects.filter(courseId=Id).exists()):
+            retMsg = "This Course being deleted does not exist"
+        else:
+            Course.objects.filter(courseId=Id).delete()
+
+        return retMsg
 
     # Preconditions: The user has to have been instantiated
     # The searchPrompt is an existing course assignment name
@@ -49,8 +82,18 @@ class CourseManagement:
     # Side-effects: None
     # Search Prompt(in): Course Name you are searching for
     @staticmethod
-    def populateSearchClass(search_prompt):
-        pass
+    def populateSearchClass(Id):
+        if not (isinstance(Id, int)):
+            raise TypeError("Id entered is not of type int")
+
+        if not (Course.objects.filter(courseId=Id).exists()):
+            retMsg = "This course being deleted does not exist"
+        else:
+            retMsg = {
+                'Found Course': Course.objects.get(courseId=Id)
+            }
+
+        return retMsg
 
     # Preconditions: The user has to have been instantiated
     # There are courses to display
@@ -58,4 +101,28 @@ class CourseManagement:
     # Side-effects: None
     @staticmethod
     def displayAllCourse():
-        pass
+        allCourses = Course.objects.all()
+
+        data = {
+            'All Courses': allCourses
+        }
+
+        return allCourses
+
+    @staticmethod
+    def inputErrorChecker(Id, courseName, courseLocation, courseDays, courseHours, courseInstructor, courseTAs,
+                            courseLabs):
+        if not (isinstance(Id, int)):
+            raise TypeError("Id entered is not of type int")
+        if not (isinstance(courseName, str)):
+            raise TypeError("Lab Name entered is not of type str")
+        if not (isinstance(courseLocation, str)):
+            raise TypeError("Lab Location entered is not of type str")
+        if not (isinstance(courseDays, str)):
+            raise TypeError("Lab Hours entered is not of type str")
+        if not (isinstance(courseHours, str)):
+            raise TypeError("Lab Days entered is not of type str")
+        if not (isinstance(courseInstructor, UserProfile)):
+            raise TypeError("Lab Instructor entered is not of type User")
+        if courseInstructor.userType != "INSTRUCTOR":
+            raise TypeError("Lab Instructor's type is not of type INSTRUCTOR")

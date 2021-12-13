@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .models import UserProfile, Course, Lab
 from TAScheduler.Management.UserManagement import UserManagement
-# from TAScheduler.Management.CourseManagement import CourseManagement
+from TAScheduler.Management.CourseManagement import CourseManagement
+from TAScheduler.Management.LabManagement import LabManagement
 
 
 # Create your views here.
@@ -154,9 +155,48 @@ class EditCourse(View):
         else:
             return redirect("/../home/")
 
-    def post(self, request):
+    @staticmethod
+    def post(request):
         # TODO: implement post
         pass
+
+
+class CreateLab(View):
+    @staticmethod
+    def get(request):
+        # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
+        # they will fail the userAllowed test and be redirected back to the login page
+        # If the user is allowed then home is rendered like normal
+        if userAllowed(request, ["SUPERVISOR"]):
+            return render(request, "createlab.html")
+        else:
+            return redirect("/../home/")
+
+    @staticmethod
+    def post(request):
+        LabManagement.createLab(request.POST['labID'], request.POST['labName'],
+                                request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'],
+                                request.POST['labInstructor'], request.POST['labTA'])
+        return render(request, "createlab.html")
+
+
+class EditLab(View):
+    @staticmethod
+    def get(request):
+        # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
+        # they will fail the userAllowed test and be redirected back to the login page
+        # If the user is allowed then home is rendered like normal
+        if userAllowed(request, ["SUPERVISOR"]):
+            return render(request, "editlab.html")
+        else:
+            return redirect("/../home/")
+
+    @staticmethod
+    def post(request):
+        LabManagement.editLab(request.POST['labID'], request.POST['labName'],
+                              request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'],
+                              request.POST['labInstructor'], request.POST['labTA'])
+        return render(request, "editlab.html")
 
 
 class ClassSchedules(View):
