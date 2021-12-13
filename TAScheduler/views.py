@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import UserProfile, Course, Lab
+<<<<<<< Updated upstream
 from TAScheduler.Management.UserManagement import UserManagement
 from TAScheduler.Management.CourseManagement import CourseManagement
 
+=======
+from TAScheduler.Managment.LabManagement import LabManagement
+>>>>>>> Stashed changes
 
 # Create your views here.
 # A method to check if a user is allowed to view a certain webpage based on their userType. Included a check for if
@@ -133,6 +137,32 @@ class EditCourse(View):
         # If the user is allowed then home is rendered like normal
         if userAllowed(request, ["SUPERVISOR"]):
             return render(request, "editcourse.html")
+        else:
+            return redirect("/../home/")
+
+class CreateLab(View):
+    def get(self, request):
+        # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
+        # they will fail the userAllowed test and be redirected back to the login page
+        # If the user is allowed then home is rendered like normal
+        if userAllowed(request, ["SUPERVISOR"]):
+            LabManagement.createLab(request, request.POST['labID'], request.POST['labName'],
+            request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'], 
+            request.POST['labInstructor'], request.POST['labTA'])
+        else:
+            return redirect("/../home/")
+
+class EditLab(View):
+    def get(self, request):
+        # If the user does not have a valid name, I.E. if they try to manually enter /home in the search bar,
+        # they will fail the userAllowed test and be redirected back to the login page
+        # If the user is allowed then home is rendered like normal
+        if userAllowed(request, ["SUPERVISOR"]):
+            LabManagement.editLab(request, request.POST['labID'], request.POST['labName'],
+            request.POST['labHours'], request.POST['labLocation'], request.POST['labDays'], 
+            request.POST['labInstructor'], request.POST['labTA'])
+            
+            return render(request, "editlab.html")
         else:
             return redirect("/../home/")
           
