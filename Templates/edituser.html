@@ -43,10 +43,9 @@
              {% if change_user.username  == UserProfile.username %}
                 <td>
                     <select name="type" id="type">
-                        <option value="" selected disabled hidden>Choose an option</option>
                         <option value="SUPERVISOR">SUPERVISOR</option>
                         <option value="INSTRUCTOR">INSTRUCTOR</option>
-                        <option value="TA">TA</option>
+                        <option value="TA" selected>TA</option>
                     </select>
                 </td>
                 <td>{{ UserProfile.userID }}</td>
@@ -56,7 +55,7 @@
                 <td><input type="text" id=address name=address value={{ UserProfile.address }}></td>
                 <td><input type="tel" id=phone name=phone value={{ UserProfile.phone }}></td>
                 <td><input type="email" id=email name=email value={{ UserProfile.email }}></td>
-                <td><button name="submit" type="submit" value={{ UserProfile.username }}>Submit</button></td>
+                <td><button name="submit" type="submit" autofocus="True" value={{ UserProfile.username }}>Submit</button></td>
              {% else %}
                 <td>{{ UserProfile.userType }}</td>
                 <td>{{ UserProfile.id }}</td>
@@ -66,8 +65,10 @@
                 <td>{{ UserProfile.address }}</td>
                 <td>{{ UserProfile.phone }}</td>
                 <td>{{ UserProfile.email }}</td>
-                <td><button name="edit" type="submit" value={{ UserProfile.username }}>Edit</button></td>
-             {% endif %}
+                {% if change_user.username == null %}
+                <td><button name="edit" type="submit" autofocus="False" value={{ UserProfile.username }}>Edit</button></td>
+                {% endif %}
+            {% endif %}
              </tr>
              {% endfor%}
          </table>
