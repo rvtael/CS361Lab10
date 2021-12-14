@@ -53,6 +53,7 @@ class Login(View):
             # if no issues are found, the user is redirected and the request.session["username"] field is set to the
             # username of the user
             request.session["username"] = checkUser.username
+            request.session["user_type"] = checkUser.userType
             return redirect("/home/")
 
 
